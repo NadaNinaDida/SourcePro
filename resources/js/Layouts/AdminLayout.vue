@@ -1,4 +1,3 @@
-<!-- resources/js/Layouts/AppLayout.vue -->
 <template>
     <div class="wrapper">
       <Header />
@@ -13,9 +12,9 @@
   </template>
 
   <script>
-  import Header from '@/Components/Header.vue'
-  import Sidebar from '@/Components/SideBar.vue'
-  import Footer from '@/Components/Footer.vue'
+  import Header from '@/Components/Header.vue';
+  import Sidebar from '@/Components/SideBar.vue';
+  import Footer from '@/Components/Footer.vue';
 
   export default {
     components: {
@@ -26,24 +25,19 @@
     props: {
       title: String
     },
-    mounted() {
-      const dropdownToggle = document.querySelector('#navbarDropdown');
-      const dropdownMenu = document.querySelector('.dropdown-menu');
-
-      dropdownToggle.addEventListener('click', function(event) {
-        event.preventDefault();
-        dropdownMenu.classList.toggle('show');
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
-          dropdownMenu.classList.remove('show');
+    watch: {
+      title(newTitle) {
+        if (newTitle) {
+          document.title = newTitle;
         }
-      });
+      }
+    },
+    mounted() {
+      if (this.title) {
+        document.title = this.title;
+      }
     }
-  }
+  };
   </script>
 
-  <style scoped>
-  /* Ajoutez des styles globaux pour le layout si nécessaire */
-  </style>
+

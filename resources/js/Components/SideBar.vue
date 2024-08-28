@@ -1,6 +1,6 @@
 <template>
     <aside class="main-sidebar sidebar-dark-primary elevation-2">
-      <a href="#" class="brand-link">
+      <a href="/dashboard" class="brand-link">
         <img src="/logo.png" alt="The Source Logo" class="brand-image">
         <span class="brand-text font-weight-light">The Source</span>
       </a>
@@ -8,13 +8,13 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item menu-open">
-              <a href="#" class="nav-link">
+              <a href="/dashboard" class="nav-link">
                 <img src="/images/dash2.png" alt="" class="nav-icon">
                     <span>Dashboard</span>
               </a>
             </li>
             <li class="nav-item menu-open">
-              <a href="#" class="nav-link">
+              <a href="/adherants" class="nav-link">
                 <img src="/images/diplome.png" alt="" class="nav-icon">
                    <span>Adhérant</span>
               </a>

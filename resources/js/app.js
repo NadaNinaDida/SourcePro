@@ -1,7 +1,10 @@
 import './bootstrap';
 import '../css/app.css';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'admin-lte/plugins/fontawesome-free/css/all.css';
 import 'admin-lte/dist/css/adminlte.css';
+
 
 
 import { createApp, h } from 'vue';

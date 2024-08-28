@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 class HomeControlller extends Controller
 {
-    public function test(){
-     return Inertia::render('test2');
+    public function dashboard(){
+     return Inertia::render('test');
     }
 }
