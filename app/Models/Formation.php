@@ -20,4 +20,10 @@ class Formation extends Model
     return $this->belongsToMany(Adherant::class, 'adherent_formation')
                 ->withPivot('date_debut', 'prix_heure');
 }
+
+public function enseignants()
+{
+    return $this->hasMany(FormationEnseignant::class, 'id_cours');
+}
+
 }

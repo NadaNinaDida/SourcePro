@@ -16,4 +16,9 @@ class Enseignant extends Model
         'email',
         'qualification',
     ];
+    public function formations()
+{
+    return $this->hasMany(FormationEnseignant::class, 'id_enseignant');
+}
+
 }

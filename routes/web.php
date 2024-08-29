@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeControlller;
 use App\Http\Controllers\AdherantController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\EnseignantController;
+use App\Http\Controllers\FormationEnseignantController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('enseignants', EnseignantController::class);
     Route::get('adherents/{adherent}/assign', [AdherantController::class, 'assignForm'])->name('adherents.assignForm');
     Route::post('adherents/{adherent}/assign', [AdherantController::class, 'assign'])->name('adherents.assign');
-
+    Route::resource('formation-enseignants', FormationEnseignantController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -1,10 +1,10 @@
 <template>
     <div class="container mt-0">
         <br>
-      <h1 class="mx-4 my-2"> <i class="fa-regular fa-rectangle-list"></i>  Liste des enseignants</h1>
+      <h1 class="mx-4 my-2"> <i class="fa-regular fa-rectangle-list"></i>  Liste Des Enseignants</h1>
       <br>
       <div class="d-flex justify-content-end mb-3">
-  <a :href="route('enseignants.create')" class="btn btn-primary"> <i class="fa-solid fa-user-plus"></i> Ajouter un enseignant</a>
+  <a :href="route('enseignants.create')" class="btn btn-primary"> <i class="fa-solid fa-user-plus"></i> Ajouter Un Enseignant</a>
 </div>
 
 

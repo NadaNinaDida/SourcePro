@@ -1,6 +1,8 @@
 <template>
-    <div class="container mt-0">
-      <h1 class="mx-4 my-2">Modifier un enseignant</h1>
+  <div class="container-fluid mt-0" style="width:60%; margin:auto;">
+    <br>
+          <h1 class="mx-4 my-2">Modifier Un Enseignant</h1>
+          <br>
       <form @submit.prevent="submit">
         <div class="form-group">
           <label for="nom">Nom</label>
@@ -26,7 +28,7 @@
           <label for="qualification">Qualification</label>
           <input type="text" v-model="form.qualification" class="form-control" id="qualification" required>
         </div>
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        <button type="submit" class="btn btn-primary mb-2">Mettre à jour</button>
       </form>
     </div>
   </template>

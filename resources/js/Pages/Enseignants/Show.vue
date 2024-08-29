@@ -1,6 +1,8 @@
 <template>
-    <div class="container mt-0">
-      <h1 class="mx-4 my-2">Détails de l'enseignant</h1>
+    <div class="container-fluid mt-0" style="width:60%; margin:auto;">
+        <br>
+        <h1 class="mx-4 my-2">Détails de l'enseignant</h1>
+        <br>
       <table class="table table-striped">
         <tr>
           <th>Nom</th>

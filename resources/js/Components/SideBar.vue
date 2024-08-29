@@ -20,15 +20,22 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="/formations" class="nav-link" :class="{ active: currentPath === '/formations' }" @click="setCurrentPath('/formations')">
+                <img src="/images/documents.png" alt="Formation" class="nav-icon">
+                <span>Formation</span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="/enseignants" class="nav-link" :class="{ active: currentPath === '/enseignants' }" @click="setCurrentPath('/enseignants')">
                 <img src="/images/prof.png" alt="Enseignant" class="nav-icon">
                 <span>Enseignant</span>
               </a>
             </li>
+
             <li class="nav-item">
-              <a href="/formations" class="nav-link" :class="{ active: currentPath === '/formations' }" @click="setCurrentPath('/formations')">
-                <img src="/images/documents.png" alt="Formation" class="nav-icon">
-                <span>Formation</span>
+              <a href="/formation-enseignants" class="nav-link" :class="{ active: currentPath === '/formation-enseignants' }" @click="setCurrentPath('/formation-enseignants')">
+                <img src="/images/diploma.png" alt="formation-enseignants" class="nav-icon">
+                <span>Affectation</span>
               </a>
             </li>
             <li class="nav-item">
@@ -39,7 +46,7 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link" :class="{ active: currentPath === '#' }" @click="setCurrentPath('/recettes')">
-                <img src="/images/calendrier.png" alt="Recettes" class="nav-icon">
+                <img src="/images/argent.png" alt="Recettes" class="nav-icon">
                 <span>Recettes</span>
               </a>
             </li>
