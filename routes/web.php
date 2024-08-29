@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeControlller;
 use App\Http\Controllers\AdherantController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\EnseignantController;
+use App\Http\Controllers\AchatController;
 use App\Http\Controllers\FormationEnseignantController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('adherants', AdherantController::class);
     Route::resource('formations', FormationController::class);
     Route::resource('enseignants', EnseignantController::class);
+    Route::resource('achats', AchatController::class);
     Route::get('adherents/{adherent}/assign', [AdherantController::class, 'assignForm'])->name('adherents.assignForm');
     Route::post('adherents/{adherent}/assign', [AdherantController::class, 'assign'])->name('adherents.assign');
     Route::resource('formation-enseignants', FormationEnseignantController::class);

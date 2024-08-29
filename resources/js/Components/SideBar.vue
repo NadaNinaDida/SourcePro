@@ -51,7 +51,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: currentPath === '#' }" @click="setCurrentPath('/achats')">
+              <a href="/achats" class="nav-link" :class="{ active: currentPath === '/achats' }" @click="setCurrentPath('/achats')">
                 <img src="/images/panier.png" alt="Achat" class="nav-icon">
                 <span>Achat</span>
               </a>
