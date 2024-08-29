@@ -72,7 +72,7 @@
                 <div class="card-header">
                   <h3 class="card-title">
                     <i class="fas fa-chart-pie mr-1"></i>
-                    Nombre d’adhérents inscrits / Jour
+                    Nombre d'adhérents inscrits par jour
                     </h3>
                   <div class="card-tools">
                     <ul class="nav nav-pills ml-auto">
@@ -109,7 +109,7 @@
               <!-- Map card -->
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Visitors</h3>
+                  <h3 class="card-title">Nombre de formations lancées par mois </h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

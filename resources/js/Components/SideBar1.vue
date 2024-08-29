@@ -6,68 +6,59 @@
       </a>
       <div class="sidebar">
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-widget="treeview" data-accordion="false">
-            <li class="nav-item">
-              <a href="/dashboard" class="nav-link" :class="{ active: currentPath === '/dashboard' }" @click="setCurrentPath('/dashboard')">
-                <img src="/images/dash2.png" alt="Dashboard" class="nav-icon">
-                <span>Dashboard</span>
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item menu-open">
+              <a href="/dashboard" class="nav-link">
+                <img src="/images/dash2.png" alt="" class="nav-icon">
+                    <span>Dashboard</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="/adherants" class="nav-link" :class="{ active: currentPath === '/adherants' }" @click="setCurrentPath('/adherants')">
-                <img src="/images/diplome.png" alt="Adhérant" class="nav-icon">
-                <span>Adhérant</span>
+            <li class="nav-item menu-open">
+              <a href="/adherants" class="nav-link">
+                <img src="/images/diplome.png" alt="" class="nav-icon">
+                   <span>Adhérant</span>
+              </a>
+            </li>     <li class="nav-item menu-open">
+              <a href="/enseignants" class="nav-link">
+                <img src="/images/prof.png" alt="" class="nav-icon">
+                      <span>Enseignant</span>
+              </a>
+            </li>     <li class="nav-item menu-open">
+              <a href="/formations" class="nav-link">
+                <img src="/images/documents.png" alt="" class="nav-icon">
+                      <span>Formation</span>
+              </a>
+            </li>     <li class="nav-item menu-open">
+              <a href="#" class="nav-link">
+                <img src="/images/calendrier.png" alt="" class="nav-icon">
+                        <span>Planing</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="/enseignants" class="nav-link" :class="{ active: currentPath === '/enseignants' }" @click="setCurrentPath('/enseignants')">
-                <img src="/images/prof.png" alt="Enseignant" class="nav-icon">
-                <span>Enseignant</span>
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link">
+                <img src="/images/calendrier.png" alt="" class="nav-icon">
+                        <span>Recettes</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="/formations" class="nav-link" :class="{ active: currentPath === '/formations' }" @click="setCurrentPath('/formations')">
-                <img src="/images/documents.png" alt="Formation" class="nav-icon">
-                <span>Formation</span>
+
+
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link">
+                <img src="/images/panier.png" alt="" class="nav-icon">
+                        <span>Achat</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: currentPath === '#' }" @click="setCurrentPath('/planning')">
-                <img src="/images/calendrier.png" alt="Planing" class="nav-icon">
-                <span>Planing</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: currentPath === '#' }" @click="setCurrentPath('/recettes')">
-                <img src="/images/calendrier.png" alt="Recettes" class="nav-icon">
-                <span>Recettes</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: currentPath === '#' }" @click="setCurrentPath('/achats')">
-                <img src="/images/panier.png" alt="Achat" class="nav-icon">
-                <span>Achat</span>
-              </a>
-            </li>
+            <!-- Ajoutez d'autres éléments de la barre latérale ici -->
           </ul>
         </nav>
       </div>
     </aside>
   </template>
 
-  <script setup>
-  import { ref, onMounted } from 'vue'
-
-  const currentPath = ref(window.location.pathname) // Set default path based on current URL
-
-  function setCurrentPath(path) {
-    currentPath.value = path
+  <script>
+  export default {
+    name: 'Sidebar'
   }
-
-  // Update currentPath when the component mounts
-  onMounted(() => {
-    currentPath.value = window.location.pathname
-  })
   </script>
 
   <style scoped>
@@ -108,7 +99,6 @@
     padding: 15px; /* Augmente le padding pour plus de confort */
     color: #ffffff; /* Couleur du texte des liens */
     text-decoration: none; /* Supprime les sous-lignages */
-    transition: background-color 0.3s; /* Animation pour les transitions de couleur de fond */
   }
 
   /* Style pour les icônes dans la navigation */
@@ -116,12 +106,6 @@
     margin-right: 15px; /* Espace entre l'icône et le texte */
     width: 25px; /* Largeur des icônes */
     height: 25px; /* Hauteur des icônes */
-  }
-
-  /* Couleur pour l'élément actif */
-  .nav-link.active {
-    background-color: #1d3c55; /* Couleur de fond pour l'élément sélectionné */
-    color: #ffffff; /* Couleur du texte pour l'élément sélectionné */
   }
 
   /* Styles pour les écrans plus petits */

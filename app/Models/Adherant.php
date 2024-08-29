@@ -17,4 +17,9 @@ class Adherant extends Model
         'tel_parent',
         'date_inscription',
     ];
+    public function formations()
+    {
+        return $this->belongsToMany(Formation::class, 'adherent_formation')
+                    ->withPivot('date_debut', 'prix_heure');
+    }
 }

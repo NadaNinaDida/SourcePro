@@ -1,41 +1,38 @@
 <template>
     <div class="container mt-0">
         <br>
-      <h1 class="mx-4 my-2"> <i class="fa-regular fa-rectangle-list"></i>  Liste des adhérants</h1>
-<br>
+      <h1 class="mx-4 my-2"> <i class="fa-regular fa-rectangle-list"></i>  Liste des enseignants</h1>
+      <br>
       <div class="d-flex justify-content-end mb-3">
-        <a :href="route('adherants.create')" class="btn btn-primary"> <i class="fa-solid fa-plus"></i>  Ajouter un adhérant</a>
+  <a :href="route('enseignants.create')" class="btn btn-primary"> <i class="fa-solid fa-user-plus"></i> Ajouter un enseignant</a>
 </div>
+
+
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
               <th>Nom</th>
               <th>Prénom</th>
-              <th>Email</th>
-              <th>Adresse</th>
               <th>Téléphone</th>
-              <th>Téléphone Parent</th>
-              <th>Date d'inscription</th>
-               <th colspan="4">Actions</th>
+              <th>Adresse</th>
+              <th>Email</th>
+              <th>Qualification</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="adherant in adherants" :key="adherant.id">
-              <td>{{ adherant.nom }}</td>
-              <td>{{ adherant.prenom }}</td>
-              <td>{{ adherant.email }}</td>
-              <td>{{ adherant.adresse }}</td>
-              <td>{{ adherant.tel }}</td>
-              <td>{{ adherant.tel_parent }}</td>
-              <td>{{ adherant.date_inscription }}</td>
-
+            <tr v-for="enseignant in enseignants" :key="enseignant.id">
+              <td>{{ enseignant.nom }}</td>
+              <td>{{ enseignant.prenom }}</td>
+              <td>{{ enseignant.telephone }}</td>
+              <td>{{ enseignant.adresse }}</td>
+              <td>{{ enseignant.email }}</td>
+              <td>{{ enseignant.qualification }}</td>
               <td>
-                <a :href="route('adherants.show', adherant.id)" class="btn btn-info btn-sm mr-1 mb-1" ><i class="fa-solid fa-eye"></i></a>
-                <a :href="route('adherants.edit', adherant.id)" class="btn btn-warning btn-sm mr-1 mb-1"><i class="fa-solid fa-pen"></i></a>
-                <button @click="openDeleteModal(adherant.id)" class="btn btn-danger btn-sm mr-1 mb-1"><i class="fa-solid fa-trash"></i></button>
-                <a :href="route('adherents.assign', adherant.id)" class="btn btn-success btn-sm mr-1 mb-1"><i class="fa-solid fa-graduation-cap"></i></a>
-
+                <a :href="route('enseignants.show', enseignant.id)" class="btn btn-info btn-sm mr-1 mb-1"><i class="fa-solid fa-eye"></i></a>
+                <a :href="route('enseignants.edit', enseignant.id)" class="btn btn-warning btn-sm mr-1 mb-1"><i class="fa-solid fa-pen"></i></a>
+                <button @click="openDeleteModal(enseignant.id)" class="btn btn-danger btn-sm mr-1 mb-1"><i class="fa-solid fa-trash"></i></button>
               </td>
             </tr>
           </tbody>
@@ -50,7 +47,7 @@
             <button @click="closeDeleteModal" class="close-button">×</button>
           </div>
           <div class="custom-modal-body">
-            Êtes-vous sûr de vouloir supprimer cet adhérant ? Cette action est irréversible.
+            Êtes-vous sûr de vouloir supprimer cet enseignant ? Cette action est irréversible.
           </div>
           <div class="custom-modal-footer">
             <button @click="closeDeleteModal" class="btn btn-secondary mr-2">Annuler</button>
@@ -69,32 +66,29 @@
   export default {
     layout: AdminLayout,
     props: {
-      adherants: Array,
+      enseignants: Array,
       csrfToken: String,
     },
     setup(props) {
       const deleteId = ref(null);
       const showModal = ref(false);
 
-      // Création d'un formulaire pour la suppression
       const form = useForm({
         _method: 'DELETE',
         _token: props.csrfToken,
       });
 
       function route(name, id = null) {
-        const baseUrl = '/'; // Remplacez par votre base URL
+        const baseUrl = '/';
         switch(name) {
-          case 'adherants.create':
-            return `${baseUrl}adherants/create`;
-          case 'adherants.show':
-            return `${baseUrl}adherants/${id}`;
-          case 'adherants.edit':
-            return `${baseUrl}adherants/${id}/edit`;
-          case 'adherants.destroy':
-            return `${baseUrl}adherants/${id}`;
-          case 'adherents.assign':
-            return `${baseUrl}adherents/${id}/assign`;
+          case 'enseignants.create':
+            return `${baseUrl}enseignants/create`;
+          case 'enseignants.show':
+            return `${baseUrl}enseignants/${id}`;
+          case 'enseignants.edit':
+            return `${baseUrl}enseignants/${id}/edit`;
+          case 'enseignants.destroy':
+            return `${baseUrl}enseignants/${id}`;
           default:
             return baseUrl;
         }
@@ -111,22 +105,16 @@
 
       function confirmDelete() {
         if (deleteId.value !== null) {
-          form.delete(route('adherants.destroy', deleteId.value), {
+          form.delete(route('enseignants.destroy', deleteId.value), {
             onSuccess: () => {
-              // Optionnel: Rafraîchir la liste des adhérants après suppression
               location.reload();
             },
-            onError: (errors) => {
-              console.error('Erreur:', errors);
-            }
           });
-          closeDeleteModal();
-          deleteId.value = null;
         }
       }
 
       return { route, openDeleteModal, closeDeleteModal, confirmDelete, showModal };
-    }
+    },
   };
   </script>
 
@@ -137,18 +125,25 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    z-index: 1050;
   }
 
   .custom-modal {
     background: white;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    padding: 20px;
+    border-radius: 5px;
+    width: 500px;
+    max-width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .custom-modal-header,
+  .custom-modal-footer {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
   }
 
   .custom-modal-header {
@@ -158,17 +153,20 @@
   }
 
   .custom-modal-body {
-    margin: 20px 0;
-  }
-
-  .custom-modal-footer {
-    display: flex;
-    justify-content: flex-end;
+    padding: 1rem;
   }
 
   .close-button {
     background: none;
     border: none;
     font-size: 1.5rem;
+    line-height: 1;
+    color: #000;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  .close-button:hover {
+    opacity: 0.75;
   }
   </style>

@@ -1,6 +1,18 @@
 <template>
     <div class="container mt-4">
-      <h1 class="mb-4">Détails de l'adhérant</h1>
+      <br>
+      <h1 class="ml-4">Détails de l'adhérant</h1> <br>
+      <div class="d-flex justify-content-end mb-3">
+        <a :href="route('adherents.assign', adherant.id)" class="btn btn-success btn-sm mr-1 mb-1 p-2">
+          <i class="fa-solid fa-user-graduate"></i> <h7>Assigner une formation</h7>
+        </a>
+      </div>
+      <div v-if="$page.props.flash.error" class="alert alert-danger text-center mx-auto" style="max-width: 400px;">
+          <strong>{{ $page.props.flash.error }}</strong>
+      </div>
+      <div v-if="$page.props.flash.success" class="alert alert-success text-center mx-auto" style="max-width: 400px;">
+         <strong>{{ $page.props.flash.success }}</strong>
+      </div>
       <div class="card">
         <div class="card-body">
           <table class="table table-bordered table-striped">
@@ -35,6 +47,31 @@
               </tr>
             </tbody>
           </table>
+
+          <!-- Section des formations suivies -->
+          <div class="mt-4">
+            <h4 class=" col-3 bg-secondary p-2 text-center mx-auto rounded">Formations Suivies</h4>
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Formation</th>
+                  <th>Date de Début</th>
+                  <th>Prix par Heure</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="formation in adherant.formations" :key="formation.id">
+                  <td>{{ formation.nom }}</td>
+                  <td>{{ formation.pivot.date_debut }}</td>
+                  <td>{{ formation.pivot.prix_heure }} €</td>
+                </tr>
+                <tr v-if="!adherant.formations.length">
+                  <td colspan="3" class="text-center">Aucune formation assignée.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <div class="mt-3">
             <Link :href="route('adherants.index')" class="btn btn-secondary">Retour</Link>
           </div>
